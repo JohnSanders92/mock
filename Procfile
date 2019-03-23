@@ -1,1 +1,1 @@
-web: python letsgetweird.letsgetweird.app.py
+web: python letsgetweird.app.py
