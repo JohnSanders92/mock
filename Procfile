@@ -1,1 +1,1 @@
-web: gunicorn letsgetweird/app:app
+web: gunicorn mock/letsgetweird/letsgetweird/app:app
