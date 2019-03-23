@@ -9,6 +9,7 @@ verify_ssl = true
 falcon = "*"
 waitress = "*"
 gunicorn = "*"
+slackclient = "*"
 
 [requires]
 python_version = "3.7.1"

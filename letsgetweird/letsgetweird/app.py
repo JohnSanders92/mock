@@ -1,6 +1,6 @@
 import falcon
 import json
-import config
+from .config import sc
 
 
 class LetsGetWeird(object):
