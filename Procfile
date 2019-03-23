@@ -1,1 +1,1 @@
-web: gunicorn --chdir letsgetweird app:api
+web: python letsgetweird/app.py runserver 127.0.0.1:$PORT --noreload
