@@ -1,1 +1,1 @@
-web: gunicorn --chdir letsgetweird/letsgetweird app:app
+web: python letsgetweird/letsgetweird/app.py
