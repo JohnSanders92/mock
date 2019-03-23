@@ -1,1 +1,1 @@
-web: gunicorn mock/letsgetweird/letsgetweird/app:app
+web: gunicorn --chdir letsgetweird/letsgetweird app:app
