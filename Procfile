@@ -1,1 +1,1 @@
-web: python mock..letsgetweirdletsgetweird.app.py
+web: python mock.letsgetweird.letsgetweird.app.py
