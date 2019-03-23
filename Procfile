@@ -1,1 +1,1 @@
-web: gunicorn letsgetweird.app.py
+web: python mock..letsgetweirdletsgetweird.app.py
