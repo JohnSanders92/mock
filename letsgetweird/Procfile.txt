@@ -1,1 +1,1 @@
-web: gunicorn letsgetweird:app
+web: letsgetweird:app
