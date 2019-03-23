@@ -1,1 +1,1 @@
-web: watiress letsgetweird:app
+web: watiress-serve letsgetweird.app:api
