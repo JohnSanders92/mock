@@ -1,6 +1,6 @@
 import falcon
 import json
-from slackclient import SlackClient
+from .config import sc
 
 
 class LetsGetWeird(object):
@@ -11,7 +11,11 @@ class LetsGetWeird(object):
     def on_post(self, req, resp):
         data = json.loads(req.stream.read())
         # message = data['message']['text']
-        resp.body = json.dumps(data)
+        # resp.body = json.dumps(data)
+        sc.api.call("chat.postMessage",
+                    channel="shithole",
+                    text="Hello from Python! :tada:"
+        )
 
 
 
