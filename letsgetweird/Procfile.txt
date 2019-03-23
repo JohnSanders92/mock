@@ -1,1 +1,1 @@
-web: letsgetweird:app
+web: watiress letsgetweird:app
