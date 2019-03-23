@@ -1,1 +1,1 @@
-web: python letsgetweird.app.py
+web: gunicorn letsgetweird.app.py
