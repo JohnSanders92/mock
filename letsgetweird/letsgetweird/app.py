@@ -16,7 +16,8 @@ class LetsGetWeird(object):
         sc = SlackClient(slack_token)
         sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text="Go fuck yourself"
+                    text="Go fuck yourself",
+                    username="Francisco Duran"
         )
 
 api = application = falcon.API()
