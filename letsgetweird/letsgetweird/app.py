@@ -33,7 +33,7 @@ class LetsGetWeird(object):
 
             sc.api_call("chat.postMessage",
                         channel="shithole",
-                        text=newBody['messages']['text'],
+                        text=newBody['message']['text'],
                         # username="Francisco Duran"
             )
 
