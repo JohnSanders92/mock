@@ -14,16 +14,18 @@ class LetsGetWeird(object):
     def on_post(self, req, resp):
         body = req.stream.read()
         if not body:
-
-            sc.api_call("chat.postMessage",
-                    channel="shithole",
-                    text="THERE IS NO BODY",
-                    # username="Francisco Duran"
-            )
+            print('fuck you')
+            # sc.api_call("chat.postMessage",
+            #         channel="shithole",
+            #         text="THERE IS NO BODY",
+            #         # username="Francisco Duran"
+            # )
         else:
+            # body = json.loads(body.decode('utf-8'))
+            # print(body)
             sc.api_call("chat.postMessage",
                         channel="shithole",
-                        text="THERE A BODY",
+                        text=body,
                         # username="Francisco Duran"
             )
 
