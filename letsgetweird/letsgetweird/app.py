@@ -16,7 +16,7 @@ class LetsGetWeird(object):
         sc = SlackClient(slack_token)
         sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text=data['message'],
+                    text=data['message']['text'],
                     username="Francisco Duran"
         )
 
