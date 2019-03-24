@@ -24,7 +24,7 @@ class LetsGetWeird(object):
         else:
             # body = json.loads(body.decode('utf-8'))
             # print(body)
-            newBody = unquote.parse(body)
+            newBody = unquote(body)
             sc.api_call("chat.postMessage",
                         channel="shithole",
                         text=newBody,
