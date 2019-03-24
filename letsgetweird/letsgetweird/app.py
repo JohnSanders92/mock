@@ -3,7 +3,8 @@ import json
 import requests
 from slackclient import SlackClient
 import os
-
+slack_token = os.environ["SLACK_AUTH_KEY"]
+sc = SlackClient(slack_token)
 
 class LetsGetWeird(object):
 
@@ -11,16 +12,20 @@ class LetsGetWeird(object):
         print('get')
 
     def on_post(self, req, resp):
+        body = req.stream.read()
+        if not body:
 
-        data = json.loads(req.stream.read().decode('utf-8'))
-        # print(data)
-        slack_token = os.environ["SLACK_AUTH_KEY"]
-        sc = SlackClient(slack_token)
-        sc.api_call("chat.postMessage",
+            sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text="I READ THE JSON",
+                    text="THERE IS NO BODY",
                     # username="Francisco Duran"
-        )
+            )
+        else:
+            sc.api_call("chat.postMessage",
+                        channel="shithole",
+                        text="THERE A BODY",
+                        # username="Francisco Duran"
+            )
 
 
 
