@@ -12,12 +12,12 @@ class LetsGetWeird(object):
 
     def on_post(self, req, resp):
         data = json.loads(req.stream.read())
-        print(data)
+        send = data['message']['user']
         slack_token = os.environ["SLACK_AUTH_KEY"]
         sc = SlackClient(slack_token)
         sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text=data,
+                    text=send,
                     # username="Francisco Duran"
         )
 
