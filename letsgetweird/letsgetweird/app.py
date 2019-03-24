@@ -2,7 +2,8 @@ import falcon
 import json
 import requests
 from slackclient import SlackClient
-from .config import token
+import os
+
 
 class LetsGetWeird(object):
 
@@ -11,9 +12,8 @@ class LetsGetWeird(object):
 
     def on_post(self, req, resp):
 
-
-        # slack_token = "xoxp-304305798082-304290752420-577292894305-92e1cae38b04a2896605648c3a62c183"
-        sc = SlackClient(token)
+        slack_token = os.environ["SLACK_AUTH_KEY"]
+        sc = SlackClient(slack_token)
         sc.api_call("chat.postMessage",
                     channel="shithole",
                     text="Go fuck yourself"
