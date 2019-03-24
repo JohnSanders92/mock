@@ -16,10 +16,10 @@ class LetsGetWeird(object):
         sc = SlackClient(slack_token)
         sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text=data,
+                    text=data['message'],
                     username="Francisco Duran"
         )
-        
+
 
 api = application = falcon.API()
 api.add_route('/mock', LetsGetWeird())
