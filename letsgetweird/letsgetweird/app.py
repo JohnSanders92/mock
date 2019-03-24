@@ -13,14 +13,14 @@ class LetsGetWeird(object):
     def on_post(self, req, resp):
 
         data = json.loads(req.stream.read().decode('utf-8'))
-        print(data)
-        # slack_token = os.environ["SLACK_AUTH_KEY"]
-        # sc = SlackClient(slack_token)
-        # sc.api_call("chat.postMessage",
-        #             channel="shithole",
-        #             text="I READ THE JSON",
-        #             # username="Francisco Duran"
-        # )
+        # print(data)
+        slack_token = os.environ["SLACK_AUTH_KEY"]
+        sc = SlackClient(slack_token)
+        sc.api_call("chat.postMessage",
+                    channel="shithole",
+                    text="I READ THE JSON",
+                    # username="Francisco Duran"
+        )
 
 
 
