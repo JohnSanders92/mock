@@ -11,7 +11,7 @@ class LetsGetWeird(object):
         print('get')
 
     def on_post(self, req, resp):
-        data = json.loads(req.stream.read())
+        # data = json.loads(req.stream.read())
 
         slack_token = os.environ["SLACK_AUTH_KEY"]
         sc = SlackClient(slack_token)
