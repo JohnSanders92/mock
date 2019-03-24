@@ -2,6 +2,7 @@ import falcon
 import json
 import requests
 from slackclient import SlackClient
+from urlib.parse import unquote
 import os
 slack_token = os.environ["SLACK_AUTH_KEY"]
 sc = SlackClient(slack_token)
@@ -23,9 +24,10 @@ class LetsGetWeird(object):
         else:
             # body = json.loads(body.decode('utf-8'))
             # print(body)
+            newBody = unquote.parse(body)
             sc.api_call("chat.postMessage",
                         channel="shithole",
-                        text=body,
+                        text=newBody,
                         # username="Francisco Duran"
             )
 
