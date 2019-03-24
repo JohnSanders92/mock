@@ -1,6 +1,7 @@
 import falcon
 import json
-from .config import sc
+from .config import slack_auth
+sc = slack_auth()
 
 
 class LetsGetWeird(object):
