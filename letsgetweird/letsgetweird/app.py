@@ -2,7 +2,7 @@ import falcon
 import json
 import requests
 from slackclient import SlackClient
-from urlib.parse import unquote
+from urllib.parse import unquote
 import os
 slack_token = os.environ["SLACK_AUTH_KEY"]
 sc = SlackClient(slack_token)
