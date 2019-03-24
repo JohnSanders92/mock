@@ -11,15 +11,24 @@ class LetsGetWeird(object):
         print('get')
 
     def on_post(self, req, resp):
-        data = json.loads(req.stream.read())
+        try:
+            data = json.loads(req.stream.read())
 
-        slack_token = os.environ["SLACK_AUTH_KEY"]
-        sc = SlackClient(slack_token)
-        sc.api_call("chat.postMessage",
-                    channel="shithole",
-                    text="test",
-                    # username="Francisco Duran"
-        )
+            slack_token = os.environ["SLACK_AUTH_KEY"]
+            sc = SlackClient(slack_token)
+            sc.api_call("chat.postMessage",
+                        channel="shithole",
+                        text="I READ THE JSON",
+                        # username="Francisco Duran"
+            )
+        except:
+            slack_token = os.environ["SLACK_AUTH_KEY"]
+            sc = SlackClient(slack_token)
+            sc.api_call("chat.postMessage",
+                        channel="shithole",
+                        text="WHY THE FUCK WONT YOU READ THE JSON",
+                        # username="Francisco Duran"
+            )
 
 
 api = application = falcon.API()
