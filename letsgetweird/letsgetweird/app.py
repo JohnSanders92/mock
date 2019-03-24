@@ -4,8 +4,8 @@ import requests
 from slackclient import SlackClient
 from urllib.parse import unquote
 import os
-# slack_token = os.environ["SLACK_AUTH_KEY"]
-# sc = SlackClient(slack_token)
+slack_token = os.environ["SLACK_AUTH_KEY"]
+sc = SlackClient(slack_token)
 
 class LetsGetWeird(object):
 
