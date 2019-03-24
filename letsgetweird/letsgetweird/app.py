@@ -14,7 +14,8 @@ class LetsGetWeird(object):
 
     def on_post(self, req, resp):
         body = req.stream.read()
-        if not body:
+        newBody = unquote(body)
+        if not newBody:
             print('fuck you')
             # sc.api_call("chat.postMessage",
             #         channel="shithole",
@@ -24,7 +25,7 @@ class LetsGetWeird(object):
         else:
             # body = json.loads(body.decode('utf-8'))
             # print(body)
-            newBody = unquote(body)
+            
             sc.api_call("chat.postMessage",
                         channel="shithole",
                         text=newBody,
