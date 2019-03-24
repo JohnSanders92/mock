@@ -1,8 +1,8 @@
 import falcon
 import json
-from .config import slack_auth
-sc = slack_auth()
-
+import requests
+from slackclient import SlackClient
+from .config import token
 
 class LetsGetWeird(object):
 
@@ -10,15 +10,14 @@ class LetsGetWeird(object):
         print('get')
 
     def on_post(self, req, resp):
-        data = json.loads(req.stream.read())
-        # message = data['message']['text']
-        # resp.body = json.dumps(data)
-        sc.api.call("chat.postMessage",
+
+
+        # slack_token = "xoxp-304305798082-304290752420-577292894305-92e1cae38b04a2896605648c3a62c183"
+        sc = SlackClient(token)
+        sc.api_call("chat.postMessage",
                     channel="shithole",
-                    text="Hello from Python! :tada:"
+                    text="Go fuck yourself"
         )
-
-
 
 api = application = falcon.API()
 api.add_route('/mock', LetsGetWeird())
