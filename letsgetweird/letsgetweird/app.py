@@ -4,8 +4,8 @@ import requests
 from slackclient import SlackClient
 from urllib.parse import unquote
 import os
-slack_token = os.environ["SLACK_AUTH_KEY"]
-sc = SlackClient(slack_token)
+# slack_token = os.environ["SLACK_AUTH_KEY"]
+# sc = SlackClient(slack_token)
 
 class LetsGetWeird(object):
 
@@ -24,11 +24,16 @@ class LetsGetWeird(object):
             # )
         else:
             # body = json.loads(body.decode('utf-8'))
-            # print(body)
+            newBody = body.decode()
+            newBody = unquote(newBody)
+            newBody = newBody.split('=')[1]
+
+            # newBody = json.loads(newBody.split('=')[1])
+            newBody = json.loads(newBody)
 
             sc.api_call("chat.postMessage",
                         channel="shithole",
-                        text=body,
+                        text=newBody,
                         # username="Francisco Duran"
             )
 
