@@ -22,7 +22,6 @@ class LetsGetWeird(object):
             #         # username="Francisco Duran"
             # )
         else:
-            # body = json.loads(body.decode('utf-8'))
             newBody = body.decode()
             newBody = unquote(newBody)
             newBody = newBody.split('=')[1]
@@ -43,6 +42,8 @@ class LetsGetWeird(object):
         for char in string:
             if char == '+':
                 char = ' '
+            elif char == ' ':
+                char = ""
             if (oddEven % 2 == 0):
                 char = char.upper()
                 oddEven += 1
