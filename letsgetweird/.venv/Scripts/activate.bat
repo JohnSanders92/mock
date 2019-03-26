@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=E:\mock\mock\.venv"
+set "VIRTUAL_ENV=E:\mock\letsgetweird\.venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

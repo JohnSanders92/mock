@@ -1,0 +1,1 @@
+web: gunicorn -b 0.0.0.0:$PORT --chdir letsgetweird/letsgetweird app:api --log-level=DEBUG
