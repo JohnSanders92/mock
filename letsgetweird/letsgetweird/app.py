@@ -3,6 +3,7 @@ import json
 from slackclient import SlackClient
 from urllib.parse import unquote
 import os
+import time
 slack_token = os.environ["SLACK_AUTH_KEY"]
 sc = SlackClient(slack_token)
 
@@ -35,6 +36,7 @@ class LetsGetWeird(object):
                         as_user=False,
                         username="mock"
             )
+            time.sleep(30)
 
     def mockInput(string):
         oddEven = 0
@@ -43,13 +45,14 @@ class LetsGetWeird(object):
             if char == '+':
                 char = ' '
             elif char == ' ':
-                char = ""
-            if (oddEven % 2 == 0):
-                char = char.upper()
-                oddEven += 1
-            elif (oddEven % 2 == 1):
-                char = char.lower()
-                oddEven += 1
+                char = ''
+            else:
+                if (oddEven % 2 == 0):
+                    char = char.upper()
+                    oddEven += 1
+                elif (oddEven % 2 == 1):
+                    char = char.lower()
+                    oddEven += 1
             output = output + char
 
         return output
