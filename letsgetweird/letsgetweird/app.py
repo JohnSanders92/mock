@@ -36,7 +36,6 @@ class LetsGetWeird(object):
                         as_user=False,
                         username="mock"
             )
-            time.sleep(30)
 
     def mockInput(string):
         oddEven = 0
@@ -46,6 +45,10 @@ class LetsGetWeird(object):
                 char = ' '
             elif char == ' ':
                 char = ''
+            elif (ord(char) >= 33 and ord(char) <= 47) \
+                    or (ord(char) >= 58 and ord(char) <= 64) \
+                    or (ord(char) >= 91 and ord(char) <= 96):
+                char = char
             else:
                 if (oddEven % 2 == 0):
                     char = char.upper()
