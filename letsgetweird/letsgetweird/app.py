@@ -1,6 +1,5 @@
 import falcon
 import json
-import requests
 from slackclient import SlackClient
 from urllib.parse import unquote
 import os
@@ -30,13 +29,29 @@ class LetsGetWeird(object):
 
             # newBody = json.loads(newBody.split('=')[1])
             newBody = json.loads(newBody)
-
+            output = LetsGetWeird.mockInput(newBody['message']['text'])
             sc.api_call("chat.postMessage",
                         channel="shithole",
-                        text=newBody['message']['text'],
+                        text=output,
                         as_user=False,
                         username="mock"
             )
+
+    def mockInput(string):
+        oddEven = 0
+        output = ''
+        for char in string:
+            if char == '+':
+                char = ' '
+            if (oddEven % 2 == 0):
+                char = char.upper()
+                oddEven += 1
+            elif (oddEven % 2 == 1):
+                char = char.lower()
+                oddEven += 1
+            output = output + char
+
+        return output
 
 
 
