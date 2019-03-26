@@ -47,7 +47,8 @@ class LetsGetWeird(object):
                 char = ''
             elif (ord(char) >= 33 and ord(char) <= 47) \
                     or (ord(char) >= 58 and ord(char) <= 64) \
-                    or (ord(char) >= 91 and ord(char) <= 96):
+                    or (ord(char) >= 91 and ord(char) <= 96) \
+                    or (ord(char) >=123 and ord(char) <= 126):
                 char = char
             else:
                 if (oddEven % 2 == 0):
