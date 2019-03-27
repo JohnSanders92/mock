@@ -23,7 +23,7 @@ class LetsGetWeird(object):
             body = unquote(body)
             body = body.split('=')[1]
             body = json.loads(body)
-            userInfo = requests.get("https://slack.com/api/users.info", params={"user":"U8Y8JN4CC", "token":slack_token})
+            userInfo = sc.api_call("user.info", user=body['user']['id'], token=slack_token)
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
