@@ -31,7 +31,7 @@ class LetsGetWeird(object):
             newBody = json.loads(newBody)
             output = LetsGetWeird.mockInput(newBody['message']['text'])
             sc.api_call("chat.postMessage",
-                        channel="shithole",
+                        channel=newBody['channel']['id'],
                         text=output,
                         as_user=False,
                         username="mock"
