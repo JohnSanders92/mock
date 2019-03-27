@@ -25,7 +25,7 @@ class LetsGetWeird(object):
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
-                        text="<@U8Y8JN4CC>",
+                        text=output,
                         as_user=False,
                         username="mock"
             )
