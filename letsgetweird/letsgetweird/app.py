@@ -22,11 +22,10 @@ class LetsGetWeird(object):
             body = unquote(body)
             body = body.split('=')[1]
             body = json.loads(body)
-            userInfo = sc.api_call("user.list")
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
-                        text=userInfo,
+                        text="<@U8Y8JN4CC>",
                         as_user=False,
                         username="mock"
             )
