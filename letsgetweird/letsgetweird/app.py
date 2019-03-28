@@ -3,7 +3,8 @@ import json
 from slackclient import SlackClient
 from urllib.parse import unquote
 import os
-import time
+import requests
+
 slack_token = os.environ["SLACK_AUTH_KEY"]
 sc = SlackClient(slack_token)
 
@@ -14,24 +15,24 @@ class LetsGetWeird(object):
 
     def on_post(self, req, resp):
         body = req.stream.read()
-        # newBody = unquote(body)
         if not body:
-            print('fuck you')
-            # sc.api_call("chat.postMessage",
-            #         channel="shithole",
-            #         text="THERE IS NO BODY",
-            #         # username="Francisco Duran"
-            # )
-        else:
-            newBody = body.decode()
-            newBody = unquote(newBody)
-            newBody = newBody.split('=')[1]
+            print('')
 
-            # newBody = json.loads(newBody.split('=')[1])
-            newBody = json.loads(newBody)
-            output = LetsGetWeird.mockInput(newBody['message']['text'])
+        else:
+            body = body.decode()
+            body = unquote(body)
+            body = body.split('=')[1]
+            body = json.loads(body)
+            url = "https://slack.com/api/users.info"
+            params = {
+                'user':body['user']['id'],
+                'token':slack_token
+            }
+            userInfo = requests.get(url=url, params=params)
+            userInfo = userInfo.json()
+            output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
-                        channel="shithole",
+                        channel=body['channel']['id'],
                         text=output,
                         as_user=False,
                         username="mock"
