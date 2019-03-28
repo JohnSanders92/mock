@@ -64,12 +64,9 @@ class LetsGetWeird(object):
 
         return output
 
-
     def getMentions(string):
         array = []
-        string = string.split(" ")
-        string.pop()
-        print(string)
+        string = string.split("+")
         for x in string:
             if x[0] == '@':
                 array.append(x)
