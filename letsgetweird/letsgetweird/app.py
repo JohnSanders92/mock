@@ -36,7 +36,7 @@ class LetsGetWeird(object):
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
-                        text=mentions,
+                        text=userIds,
                         as_user=False,
                         username="mock"
             )
@@ -78,6 +78,7 @@ class LetsGetWeird(object):
     def getUserInfo(userIds):
         array = []
         for userId in userIds:
+
             url = "https://slack.com/api/users.info"
             params = {
                 'user': userId[1:],
@@ -85,7 +86,6 @@ class LetsGetWeird(object):
             }
             userInfo = requests.get(url=url, params=params)
             userInfo = userInfo.json()
-            # print(userInfo)
             userInfo = userInfo['user']['profile']['display_name']
             array.append(userInfo)
         return array
