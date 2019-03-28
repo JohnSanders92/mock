@@ -23,17 +23,20 @@ class LetsGetWeird(object):
             body = unquote(body)
             body = body.split('=')[1]
             body = json.loads(body)
-            url = "https://slack.com/api/users.info"
-            params = {
-                'user':body['user']['id'],
-                'token':slack_token
-            }
-            userInfo = requests.get(url=url, params=params)
-            userInfo = userInfo.json()
+            userIds = LetsGetWeird.getMentions(body['message']['text'])
+            mentions = LetsGetWeird.getUserInfo(userIds)
+
+            # url = "https://slack.com/api/users.info"
+            # params = {
+            #     'user':body['user']['id'],
+            #     'token':slack_token
+            # }
+            # userInfo = requests.get(url=url, params=params)
+            # userInfo = userInfo.json()
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
-                        text=output,
+                        text=mentions,
                         as_user=False,
                         username="mock"
             )
@@ -61,6 +64,31 @@ class LetsGetWeird(object):
 
         return output
 
+
+    def getMentions(string):
+        array = []
+        string = string.split(" ")
+        string.pop()
+        print(string)
+        for x in string:
+            if x[0] == '@':
+                array.append(x)
+        return array
+
+    def getUserInfo(userIds):
+        array = []
+        for userId in userIds:
+            url = "https://slack.com/api/users.info"
+            params = {
+                'user': userId[1:],
+                'token': slack_token
+            }
+            userInfo = requests.get(url=url, params=params)
+            userInfo = userInfo.json()
+            # print(userInfo)
+            userInfo = userInfo['user']['profile']['display_name']
+            array.append(userInfo)
+        return array
 
 
 api = application = falcon.API()
