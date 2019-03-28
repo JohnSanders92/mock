@@ -23,8 +23,8 @@ class LetsGetWeird(object):
             body = unquote(body)
             body = body.split('=')[1]
             body = json.loads(body)
-            userIds = LetsGetWeird.getMentions(body['message']['text'])
-            mentions = LetsGetWeird.getUserInfo(userIds)
+            # userIds = LetsGetWeird.getMentions(body['message']['text'])
+            # mentions = LetsGetWeird.getUserInfo(userIds)
 
             # url = "https://slack.com/api/users.info"
             # params = {
