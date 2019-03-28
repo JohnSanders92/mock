@@ -36,7 +36,7 @@ class LetsGetWeird(object):
             output = LetsGetWeird.mockInput(body['message']['text'])
             sc.api_call("chat.postMessage",
                         channel=body['channel']['id'],
-                        text="<@U8Y8JN4Cc>",
+                        text=output,
                         as_user=False,
                         username="mock"
             )
@@ -44,49 +44,30 @@ class LetsGetWeird(object):
     def mockInput(string):
         oddEven = 0
         output = ''
+        mock = True
         for char in string:
             if char == '+':
                 char = ' '
+            elif char == "<":
+                mock = False
+            elif char == ">":
+                mock = True
             elif char == ' ':
                 char = ''
             elif (ord(char) >= 33 and ord(char) <= 64) \
                     or (ord(char) >= 91 and ord(char) <= 96) \
-                    or (ord(char) >=123 and ord(char) <= 126):
+                    or (ord(char) >= 123 and ord(char) <= 126):
                 char = char
             else:
-                if (oddEven % 2 == 0):
+                if (oddEven % 2 == 0 and mock is True):
                     char = char.upper()
                     oddEven += 1
-                elif (oddEven % 2 == 1):
+                elif (oddEven % 2 == 1 and mock is True):
                     char = char.lower()
                     oddEven += 1
             output = output + char
 
         return output
-
-    def getMentions(string):
-        array = []
-        string = string.split("+")
-        for x in string:
-            if x[0] == '@':
-                array.append(x)
-        return array
-
-    def getUserInfo(userIds):
-        array = []
-        for userId in userIds:
-
-            url = "https://slack.com/api/users.info"
-            params = {
-                'user': userId[1:],
-                'token': slack_token
-            }
-            userInfo = requests.get(url=url, params=params)
-            userInfo = userInfo.json()
-            userInfo = userInfo['user']['profile']['display_name']
-            array.append(userInfo)
-        return array
-
 
 api = application = falcon.API()
 api.add_route('/mock', LetsGetWeird())
