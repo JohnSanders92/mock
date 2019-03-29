@@ -1,4 +1,1 @@
-*
-*
-*
-*
+Uses slack API to post to our workspace to mock a user when they say stupid things.
