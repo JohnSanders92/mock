@@ -1,1 +1,2 @@
-Uses slack API to post to our workspace to mock a user when they say stupid things.
+Side project for an app to mess around with slacks API and HTTP requests using the falcon API in python. Its only purpose is simple to
+upper case then lower case each letter in a sentence. 
